@@ -4,71 +4,31 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 void main() => runApp(BlackoutDatesCustomization());
 
-class BlackoutDatesCustomization extends StatefulWidget {
-  @override
-  BlackoutDatesCustomizationState createState() =>
-      BlackoutDatesCustomizationState();
-}
-
-List<String> views = <String>[
-  'Month',
-  'Timeline Month',
-];
-
-class BlackoutDatesCustomizationState
-    extends State<BlackoutDatesCustomization> {
-  CalendarController _calendarController;
-  List<DateTime> _blackoutDates;
-
-  @override
-  void initState() {
-    _calendarController = CalendarController();
-    _calendarController.view = CalendarView.month;
-    _blackoutDates = <DateTime>[
-      DateTime.now().add(Duration(days: 2)),
-      DateTime.now().add(Duration(days: 3)),
-    ];
-    super.initState();
-  }
-
+class BlackoutDatesCustomization extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-            appBar: AppBar(
-              leading: PopupMenuButton<String>(
-                icon: Icon(Icons.calendar_today),
-                itemBuilder: (BuildContext context) =>
-                    views.map((String choice) {
-                  return PopupMenuItem<String>(
-                    value: choice,
-                    child: Text(choice),
-                  );
-                }).toList(),
-                onSelected: (String value) {
-                  setState(() {
-                    if (value == 'Month') {
-                      _calendarController.view = CalendarView.month;
-                    } else if (value == 'Timeline Month') {
-                      _calendarController.view = CalendarView.timelineMonth;
-                    }
-                  });
-                },
-              ),
-            ),
             body: SafeArea(
-              child: SfCalendar(
-                controller: _calendarController,
-                dataSource: _getDataSource(),
-                blackoutDates: _blackoutDates,
-                blackoutDatesTextStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13,
-                    color: Colors.pinkAccent,
-                    decoration: TextDecoration.lineThrough),
-              ),
-            )));
+          child: SfCalendar(
+            view: CalendarView.month,
+            allowedViews: <CalendarView>[
+              CalendarView.month,
+              CalendarView.timelineMonth
+            ],
+            dataSource: _getDataSource(),
+            blackoutDates: <DateTime>[
+              DateTime.now().add(Duration(days: 1)),
+              DateTime.now().add(Duration(days: 2))
+            ],
+            blackoutDatesTextStyle: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: Colors.pinkAccent,
+                decoration: TextDecoration.lineThrough),
+          ),
+        )));
   }
 
   _DataSource _getDataSource() {
