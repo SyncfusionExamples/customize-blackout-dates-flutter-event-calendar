@@ -4,6 +4,8 @@ A quick-start example to help you to customize the blackout dates in the Flutter
 
 The blackout dates in the Flutter event calendar can be customised using the [blackoutDatesTextStyle](https://pub.dev/documentation/syncfusion_flutter_calendar/latest/calendar/SfCalendar/blackoutDatesTextStyle.html) property of the Flutter event calendar.
 
+![BlackoutDatesCustom](https://user-images.githubusercontent.com/46158936/209103059-cf14e38a-6f2f-44e5-acf5-891b9696f87c.png)
+
 For more details, you can refer to our [KB](https://www.syncfusion.com/kb/12003/how-to-customize-the-blackout-dates-in-the-flutter-event-calendar-sfcalendar)
 
 ## Requirements to run the demo
