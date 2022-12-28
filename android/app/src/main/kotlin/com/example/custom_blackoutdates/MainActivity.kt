@@ -1,4 +1,4 @@
-package com.example.flutter_blackoutdates_custom
+package com.example.custom_blackoutdates
 
 import io.flutter.embedding.android.FlutterActivity
 
